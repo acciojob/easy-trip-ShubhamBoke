@@ -74,7 +74,7 @@ public class AirportService {
                 break;
             }
         }
-        if(airport == null) return -1;
+        if(airport == null) return 0;
 
         City city = airport.getCity();
         Set<Integer> flightListOutgoing = airportRepository.getFlightSetTakeOff(city);
