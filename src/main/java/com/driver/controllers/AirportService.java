@@ -11,7 +11,6 @@ import java.util.*;
 
 @Service
 public class AirportService {
-    @Autowired
     AirportRepository airportRepository;
 
     public boolean addAirport(Airport airport) {
