@@ -74,10 +74,12 @@ public class AirportService {
                 break;
             }
         }
+        if(airport == null) return 0;
 
         City city = airport.getCity();
         Set<Integer> flightListOutgoing = airportRepository.getFlightSetTakeOff(city);
         Set<Integer> flightListIncoming = airportRepository.getFlightSetLanding(city);
+        if(flightListIncoming == null || flightListOutgoing == null) return 0;
 
         int count = 0;
         for(int fId: flightListIncoming){
