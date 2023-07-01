@@ -74,7 +74,7 @@ public class AirportService {
                 break;
             }
         }
-        if(airport == null) return 0;
+        if(airport == null) return -1;
 
         City city = airport.getCity();
         Set<Integer> flightListOutgoing = airportRepository.getFlightSetTakeOff(city);
@@ -83,12 +83,18 @@ public class AirportService {
 
         int count = 0;
         for(int fId: flightListIncoming){
-            if(airportRepository.getFlight(fId).getFlightDate() == date)
+            Date fdate = airportRepository.getFlight(fId).getFlightDate();
+            if(fdate.getMonth() == date.getMonth() && fdate.getDate() == date.getDate() && fdate.getYear() == date.getYear()){
                 count += airportRepository.getFlightAttendees(fId).size();
+            }
+
         }
         for(int fId: flightListOutgoing){
-            if(airportRepository.getFlight(fId).getFlightDate() == date)
+            Date fdate = airportRepository.getFlight(fId).getFlightDate();
+            if(fdate.getMonth() == date.getMonth() && fdate.getDate() == date.getDate() && fdate.getYear() == date.getYear()){
                 count += airportRepository.getFlightAttendees(fId).size();
+            }
+
         }
         return count;
     }
