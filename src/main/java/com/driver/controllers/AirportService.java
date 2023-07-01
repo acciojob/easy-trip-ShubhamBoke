@@ -11,7 +11,7 @@ import java.util.*;
 
 @Service
 public class AirportService {
-    AirportRepository airportRepository;
+    AirportRepository airportRepository = new AirportRepository();
 
     public boolean addAirport(Airport airport) {
         List<Airport> apList = airportRepository.getAirportList();
